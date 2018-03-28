@@ -46,6 +46,10 @@
   }(document, 'script', 'facebook-jssdk'));
 
   function testAPI() {
+		var btn= document.getElementById('btnInicio');
+		var btnS= document.getElementById('btnSalir');
+		btn.style.display = 'none';
+		btnS.style.display = 'block';
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
@@ -56,15 +60,18 @@
 	function salir(){
 		FB.logout(function(response) {
 console.log("sesión cerrada");
-	 // Person is now logged out
+var btn= document.getElementById('btnInicio');
+var btnS= document.getElementById('btnSalir');
+btn.style.display = 'block';
+btnS.style.display = 'none';
 });
 	}
 </script>
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();" id="btnInicio">
 </fb:login-button>
 
 
-<button onclick="salir()">Log Out</button>
+<button onclick="salir()" display="none" id="btnSalir">Log Out</button>
 <div id="status">
 </div>
 
